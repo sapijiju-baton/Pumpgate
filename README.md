@@ -1,40 +1,26 @@
 # PumpGate
 
-**Repository:** https://github.com/sapijiju-baton/Pumpgate  
-**Author:** https://github.com/sapijiju-baton  
-**Co-author:** https://github.com/a1lon9-baton  
-**Contributors:**  
-- https://github.com/andrei-baton  
-- https://github.com/arv-baton  
-- https://github.com/drew-baton  
+**A token-gating proof of concept for pump.fun launches.**
 
-**Organization:** https://batoncorporation.com
+PumpGate is a Solana Anchor program built by [Baton Corporation](https://batoncorporation.com) that gates pump.fun token launches behind a minimum $PUMP token holding requirement.
 
----
+## What It Does
 
-## What is PumpGate
+To launch a token through PumpGate, a wallet must hold at least **25,000 $PUMP tokens**. If the balance check fails, the transaction is rejected on-chain with a custom error before ever reaching pump.fun.
 
-PumpGate is an on-chain token gate wrapper for pump.fun launches built on Solana.
+> **For users:** You will need to hold 25,000 $PUMP to launch through this gate.
 
-PumpGate requires a wallet to hold a minimum of 25,000 $PUMP tokens before it will forward a token launch instruction to pump.fun. If the wallet does not hold enough $PUMP, the program throws a custom error and the launch is rejected entirely.
+## On-Chain Program
 
-This demonstrates a simple, verifiable, on-chain mechanism by which pump.fun could require $PUMP token holdings as a prerequisite for launching on the platform — creating direct utility for $PUMP and a meaningful barrier against low-quality or spam launches.
+| Network | Program ID |
+|---------|-----------|
+| Mainnet | `32cbGqR4d8QXBPmzAEuXVcdCNYkbdW78AYF7UAeqruKW` |
 
----
+[Verify on Solana Explorer](https://explorer.solana.com/address/32cbGqR4d8QXBPmzAEuXVcdCNYkbdW78AYF7UAeqruKW)
 
-## For pump.fun Users
+## Team
 
-Under a system like PumpGate, you would need to hold 25,000 $PUMP in your wallet before being able to launch a token on pump.fun. This is enforced at the program level — not a UI check, not bypassable.
-
----
-
-## On-chain Verification
-
-**Mainnet Program ID:** `REPLACE_WITH_PROGRAM_ID_AFTER_DEPLOY`
-
-Verify on Solana Explorer:  
-https://explorer.solana.com/address/REPLACE_WITH_PROGRAM_ID_AFTER_DEPLOY
-
----
-
-*This is a proof of concept deployed on Solana mainnet. Built by Baton Corporation.*
+- **Author:** [@sapijiju-baton](https://github.com/sapijiju-baton)
+- **Co-author:** [@a1lon9-baton](https://github.com/a1lon9-baton)
+- **Contributors:** [@andrei-baton](https://github.com/andrei-baton) · [@arv-baton](https://github.com/arv-baton) · [@drew-baton](https://github.com/drew-baton)
+- **Organization:** [batoncorporation.com](https://batoncorporation.com)

@@ -1,15 +1,19 @@
+[toolchain]
+anchor_version = "0.32.1"
+solana_version = "2.3.0"
+
 [features]
-seeds = false
+resolution = true
 skip-lint = false
 
 [programs.mainnet]
-pump_gate = "REPLACE_WITH_YOUR_PROGRAM_ID"
+pump_gate = "32cbGqR4d8QXBPmzAEuXVcdCNYkbdW78AYF7UAeqruKW"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "mainnet"
+cluster = "Mainnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
