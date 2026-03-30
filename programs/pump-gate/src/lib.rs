@@ -23,7 +23,7 @@ use anchor_spl::token_interface::TokenAccount;
 use anchor_spl::associated_token::AssociatedToken;
 use anchor_spl::token_interface::TokenInterface;
 
-declare_id!("E7TWqAkeGSnFTCregrvutxfjmLorTnNAHMLMH2ZYqrGF");
+declare_id!("27G2ybeDx25yjYxsedYTCPozqH6u212CLn4667YjRjgJ");
 
 const MIN_PUMP_BALANCE: u64 = 25_000 * 1_000_000;
 const PUMP_FUN_PROGRAM_ID: &str = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P";
