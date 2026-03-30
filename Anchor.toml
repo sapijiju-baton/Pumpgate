@@ -7,7 +7,7 @@ resolution = true
 skip-lint = false
 
 [programs.mainnet]
-pump_gate = "27G2ybeDx25yjYxsedYTCPozqH6u212CLn4667YjRjgJ"
+pump_gate = "5TKPAo8KQ8MddrufV5CB7S81yagckAxSQFGgnJUkVggv"
 
 [registry]
 url = "https://api.apr.dev"

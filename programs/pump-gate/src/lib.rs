@@ -1,5 +1,5 @@
-// =============================================================================
-// PumpGate — Token gate wrapper for pump.fun launches
+﻿// =============================================================================
+// PumpGate ΓÇö Token gate wrapper for pump.fun launches
 // =============================================================================
 // Repository:   https://github.com/sapijiju-baton/Pumpgate
 // Author:       https://github.com/sapijiju-baton
@@ -23,18 +23,20 @@ use anchor_spl::token_interface::TokenAccount;
 use anchor_spl::associated_token::AssociatedToken;
 use anchor_spl::token_interface::TokenInterface;
 
-declare_id!("27G2ybeDx25yjYxsedYTCPozqH6u212CLn4667YjRjgJ");
+declare_id!("5TKPAo8KQ8MddrufV5CB7S81yagckAxSQFGgnJUkVggv");
 
 const MIN_PUMP_BALANCE: u64 = 25_000 * 1_000_000;
 const PUMP_FUN_PROGRAM_ID: &str = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P";
 const CREATE_DISCRIMINATOR: [u8; 8] = [24, 30, 200, 40, 5, 28, 7, 119];
 const MPL_TOKEN_METADATA: &str = "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
 
+// Legacy SPL Token program bytes (TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA)
+// Used as the token program seed in standard ATA derivation for the bonding curve ATA
 const ASSOC_TOKEN_PROG_BYTES: [u8; 32] = [
-    140, 151, 37, 143, 78, 36, 137, 241,
-    187, 61, 16, 41, 20, 142, 13, 131,
-    11, 90, 19, 153, 218, 255, 16, 132,
-    4, 142, 123, 216, 219, 233, 248, 89,
+    6, 221, 246, 225, 215, 101, 161, 147,
+    217, 203, 225, 70, 206, 235, 121, 172,
+    28, 180, 133, 237, 95, 91, 55, 145,
+    58, 140, 245, 133, 126, 255, 0, 169,
 ];
 
 const MPL_META_PROG_BYTES: [u8; 32] = [
@@ -128,7 +130,7 @@ pub mod pump_gate {
             ctx.accounts.pump_metadata.to_account_info(),
             ctx.accounts.user.to_account_info(),
             ctx.accounts.system_program.to_account_info(),
-            ctx.accounts.token_program.to_account_info(),  // legacy — pump.fun requires this
+            ctx.accounts.token_program.to_account_info(),  // legacy ΓÇö pump.fun requires this
             ctx.accounts.associated_token_program.to_account_info(),
             ctx.accounts.rent.to_account_info(),
             ctx.accounts.pump_event_authority.to_account_info(),
@@ -137,7 +139,7 @@ pub mod pump_gate {
 
         invoke(&ix, &account_infos)?;
 
-        msg!("✅ Gate passed. Token launched via pump.fun.");
+        msg!("Γ£à Gate passed. Token launched via pump.fun.");
         msg!("Admin: {}", ADMIN);
         Ok(())
     }
@@ -193,9 +195,9 @@ pub struct GatedLaunch<'info> {
     pub pump_fun_program: UncheckedAccount<'info>,
 
     pub system_program: Program<'info, System>,
-    /// Token-2022 — used to validate the PUMP ATA
+    /// Token-2022 ΓÇö used to validate the PUMP ATA
     pub pump_token_program: Interface<'info, TokenInterface>,
-    /// Legacy token program — required by pump.fun CPI
+    /// Legacy token program ΓÇö required by pump.fun CPI
     pub token_program: Interface<'info, TokenInterface>,
     pub associated_token_program: Program<'info, AssociatedToken>,
 
@@ -206,9 +208,9 @@ pub struct GatedLaunch<'info> {
 
 #[error_code]
 pub enum GateError {
-    #[msg("NOT ENOUGH $PUMP HELD — you need 25,000 $PUMP to launch")]
+    #[msg("NOT ENOUGH $PUMP HELD ΓÇö you need 25,000 $PUMP to launch")]
     NotEnoughPump,
 
-    #[msg("WRONG MINT — this program only gates the specified token")]
+    #[msg("WRONG MINT ΓÇö this program only gates the specified token")]
     InvalidMint,
 }
