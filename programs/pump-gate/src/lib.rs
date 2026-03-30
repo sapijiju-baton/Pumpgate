@@ -23,7 +23,7 @@ use anchor_spl::token_interface::TokenAccount;
 use anchor_spl::associated_token::AssociatedToken;
 use anchor_spl::token_interface::TokenInterface;
 
-declare_id!("32cbGqR4d8QXBPmzAEuXVcdCNYkbdW78AYF7UAeqruKW");
+declare_id!("DVPmNqbmLd4Y3d9vV4bDDojnfuzdCP8Xcxah1VxKDWM8");
 
 const MIN_PUMP_BALANCE: u64 = 25_000 * 1_000_000;
 const PUMP_FUN_PROGRAM_ID: &str = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P";
@@ -128,7 +128,7 @@ pub mod pump_gate {
             ctx.accounts.pump_metadata.to_account_info(),
             ctx.accounts.user.to_account_info(),
             ctx.accounts.system_program.to_account_info(),
-            ctx.accounts.token_program.to_account_info(),
+            ctx.accounts.token_program.to_account_info(),  // legacy — pump.fun requires this
             ctx.accounts.associated_token_program.to_account_info(),
             ctx.accounts.rent.to_account_info(),
             ctx.accounts.pump_event_authority.to_account_info(),
@@ -155,7 +155,7 @@ pub struct GatedLaunch<'info> {
     #[account(
         token::mint = pump_mint,
         token::authority = user,
-        token::token_program = token_program,
+        token::token_program = pump_token_program,
     )]
     pub user_pump_token_account: InterfaceAccount<'info, TokenAccount>,
 
@@ -193,6 +193,9 @@ pub struct GatedLaunch<'info> {
     pub pump_fun_program: UncheckedAccount<'info>,
 
     pub system_program: Program<'info, System>,
+    /// Token-2022 — used to validate the PUMP ATA
+    pub pump_token_program: Interface<'info, TokenInterface>,
+    /// Legacy token program — required by pump.fun CPI
     pub token_program: Interface<'info, TokenInterface>,
     pub associated_token_program: Program<'info, AssociatedToken>,
 
