@@ -18,7 +18,7 @@ To launch a token through PumpGate, a wallet must hold at least **25,000 $PUMP t
 
 [Verify on Solana Explorer](https://explorer.solana.com/address/32cbGqR4d8QXBPmzAEuXVcdCNYkbdW78AYF7UAeqruKW)
 
-## $PUMP Token
+## Launched Token
 
 | | Address |
 |-|---------|

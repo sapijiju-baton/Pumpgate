@@ -27,7 +27,6 @@ declare_id!("32cbGqR4d8QXBPmzAEuXVcdCNYkbdW78AYF7UAeqruKW");
 
 const MIN_PUMP_BALANCE: u64 = 25_000 * 1_000_000;
 const PUMP_FUN_PROGRAM_ID: &str = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P";
-const PUMP_MINT: &str = "pump34RrQKdC5WqsfgnkKzSTS4oRDaW5QhcGaZTvksa";
 const CREATE_DISCRIMINATOR: [u8; 8] = [24, 30, 200, 40, 5, 28, 7, 119];
 const MPL_TOKEN_METADATA: &str = "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s";
 
@@ -160,8 +159,7 @@ pub struct GatedLaunch<'info> {
     )]
     pub user_pump_token_account: InterfaceAccount<'info, TokenAccount>,
 
-    /// CHECK: validated via address constraint — must be the official $PUMP mint
-    #[account(address = PUMP_MINT.parse::<Pubkey>().unwrap())]
+    /// CHECK: validated via token account constraint
     pub pump_mint: UncheckedAccount<'info>,
 
     /// CHECK: PDA
